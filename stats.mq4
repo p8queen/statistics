@@ -15,13 +15,13 @@ double val, longMA, valClose, delta, valLowNext, deltaPips;
 int OnInit()
   {
 //---
-   for(int z=1;z<8000;z++){
+   for(int z=1;z<7000;z++){
       val=iCustom(Symbol(),0,"mysuns",1,z);
       if(val>0){
          longMA = iMA(Symbol(),PERIOD_H1,200,0,MODE_EMA,PRICE_CLOSE,z);
          valClose = iClose(Symbol(),PERIOD_H1,z);
          delta = MathAbs(valClose-longMA);
-         if(delta>1000*Point){
+         if(delta>1500*Point){
             valLowNext = getHighestNextsCandles(z,240);
             deltaPips = (valClose-valLowNext)*10000*(-1);
             Print("vela: ",z,", price: ",valClose,", valMinimo proximas velas: ",valLowNext, ", deltaPips to min: ",deltaPips);
